@@ -14,7 +14,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        String sqlRequest = "create table users (id int auto_increment not null primary key , name varchar(60) not null, lastname varchar(60) not null , age int not null);";
+        String sqlRequest = "create table users (id int auto_increment not null primary key , name varchar(60) not null, lastName varchar(60) not null , age int not null);";
         try (Connection connect = Util.connectDB(); Statement statement = connect.createStatement()) {
             statement.executeUpdate(sqlRequest);
         } catch (SQLException ignore) {
@@ -32,7 +32,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String preparedStat = "insert into users (name, lastname, age) values (?, ?, ?);";
+        String preparedStat = "insert into users (name, lastName, age) values (?, ?, ?);";
         try (Connection connect = Util.connectDB(); PreparedStatement statement = connect.prepareStatement(preparedStat)) {
             statement.setString(1, name);
             statement.setString(2, lastName);
